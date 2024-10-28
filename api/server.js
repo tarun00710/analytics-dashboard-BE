@@ -4,9 +4,9 @@ const csv = require("csv-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const Analytics = require("./models/Analytics");
+const Analytics = require("../models/Analytics");
 const { parse, format } = require("date-fns");
-const authRoutes = require("./routes/auth");
+const authRoutes = require("../routes/auth");
 
 dotenv.config();
 
