@@ -40,11 +40,7 @@ app.get("/api/getdata", (req, res) => {
       if (data.Day) {
         // Parse the Day field using date-fns for DD/MM/YYYY format
         const parsedDate = parse(data.Day, "dd/MM/yyyy", new Date());
-
-        // Format to ISO 8601 format
         data.Day = format(parsedDate, "yyyy-MM-dd'T'HH:mm:ss'Z'"); // Convert to ISO string (UTC)
-
-        // Create a new instance of the Analytics model
         const analyticsEntry = new Analytics({
           Day: data.Day,
           Age: data.Age,
@@ -56,8 +52,6 @@ app.get("/api/getdata", (req, res) => {
           E: Number(data.E),
           F: Number(data.F),
         });
-
-        // Save to MongoDB
         try {
           await analyticsEntry.save();
           console.log("Entry saved:", analyticsEntry);
